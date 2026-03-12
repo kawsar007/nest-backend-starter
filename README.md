@@ -166,8 +166,8 @@ Make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/nestjs-enterprise-starter.git
-cd nestjs-enterprise-starter
+git clone https://github.com/your-org/nest-backend-starter.git
+cd nest-backend-starter
 ```
 
 ### 2. Install Dependencies
@@ -532,3 +532,21 @@ Register the module in `app.module.ts`.
 ## 📄 License
 
 MIT — free to use as the foundation for any project.
+
+
+## 👨‍💻 Author
+
+**Kawsar Mia**
+
+Software Engineer — Backend & Frontend
+
+- Email: imkawsar007@gmail.com
+- GitHub: https://github.com/kawsar007
+- LinkedIn: https://www.linkedin.com/in/kawsar007/
+- Portfolio: https://kawsar-mia.netlify.app/
+
+If you have any questions, suggestions, or improvements, feel free to reach out.
+
+## 🤝 Contributing
+
+Contributions are welcome. Feel free to open issues or submit pull requests.
