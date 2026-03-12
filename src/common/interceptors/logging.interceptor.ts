@@ -1,0 +1,36 @@
+import {
+  Injectable,
+  NestInterceptor,
+  ExecutionContext,
+  CallHandler,
+  Logger,
+} from '@nestjs/common';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Request, Response } from 'express';
+
+/**
+ * LoggingInterceptor logs incoming requests and outgoing responses,
+ * including method, URL, status code, and response time.
+ */
+@Injectable()
+export class LoggingInterceptor implements NestInterceptor {
+  private readonly logger = new Logger('HTTP');
+
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    const request = context.switchToHttp().getRequest<Request>();
+    const response = context.switchToHttp().getResponse<Response>();
+    const { method, url, ip } = request;
+    const userAgent = request.get('user-agent') || '';
+    const start = Date.now();
+
+    return next.handle().pipe(
+      tap(() => {
+        const duration = Date.now() - start;
+        this.logger.log(
+          `${method} ${url} ${response.statusCode} — ${duration}ms | IP: ${ip} | UA: ${userAgent}`,
+        );
+      }),
+    );
+  }
+}
